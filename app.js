@@ -33,23 +33,15 @@ const createTask = (evento) => {
   titleTask.classList.add("task");
   titleTask.innerText = value;
   taskContent.appendChild(checkComplete());
-  taskContent.appendChild(titleTask);
+  taskContent.appendChild(titleTask)
+  task.appendChild(taskContent);
+  list.appendChild(task);
 
+
+//NO AGARRA
 
 
   
-  const content = `
-          
-            <i class="fas fa-trash-alt trashIcon icon"></i>
-           
-`;
-
-
-
-  task.appendChild(taskContent);
-
-
-  list.appendChild(task);
 };
 
 btn.addEventListener("click", createTask);
@@ -91,6 +83,17 @@ tarefaCompleta.classList.toggle('done')
   element.classList.toggle("far");
   
    
+}
+
+const deleteIcon = () =>{
+
+const i = document.createElement("i");
+i.classList.add('fas', 'fa-trash-alt', 'trashIcon', 'icon');
+i.addEventListener("click", deleTask);
+return i;
+}
+const deleTask = () =>{
+  console.log("Eliminar");
 }
 
 }) //ESTOS PARENTESIS QUE ACABAMOS DE COLOCAR ES ALGO QUE SE LLAMA EN JAVASCRIP IIFE, QUE HACE QUE LAS FUNCIONES
