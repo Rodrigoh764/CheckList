@@ -23,26 +23,57 @@ const createTask = (evento) => {
   //CON ESTA ACCION SE LOGRA BORRAR LO QUE SE INGRESO EN AGREGAR TAREA
   input.value = "";
 
-  //ESTO SE LLAMA BACKTICKS SIRVE PARA PEGAR CODIGO HTML, DE ESA MANERA LOGRAMOS
-  //QUE MANTENGA EL FORMATO CON LOS STYLOS, ES COMO SI SE PEGARA EN EL DOCUMENTO HTML
-  //Y MANDAMOS EL VALOR DE VALUE
+
+  const taskContent = document.createElement("div");
+
+
+
+  const titleTask = document.createElement("span");
+  titleTask.classList.add("task");
+  titleTask.innerText = value;
+  taskContent.appendChild(checkComplete());
+  taskContent.appendChild(titleTask);
+
+
+
+  
   const content = `
-            <div>
-              <i class="far fa-check-square icon"></i>
-              <span class="task">${value}</span>
-            </div>
+          
+            <i class="fas fa-trash-alt trashIcon icon"></i>
+           
 `;
 
-//INDICAMOS QUE LO QUE TENEMOS EN CONTENIDO SE PONGA EN TASK
-  task.innerHTML = content;
 
-  //los appendChild() El método agrega un nodo ( elemento ) 
-  //como el último hijo de un elemento.
+
+  task.appendChild(taskContent);
+
+
   list.appendChild(task);
-
-
 };
 
-
-
 btn.addEventListener("click", createTask);
+
+const checkComplete = () => {
+  const i = document.createElement("i");
+  i.classList.add("far", "fa-check-square", "icon");
+  i.addEventListener("click", completeTask);
+  return i;
+};
+
+const completeTask = (event) => {
+  /*
+  const element = event.target;
+  element.classList.add("fas");
+  element.classList.add("completeIcon");
+  element.classList.remove("far");
+  
+  EL TOGGLE LO QUE HACE ES QUE SI EXISTE LA CLASE LO QUITO Y SI NO EXISTE LA PONGO
+  ES UN COMODIN YA QUE ARRIBA LO QUE TENEMOS ES ADD QUE ES SUMAR O REMOVE QUE ES ELIMINAR
+  */
+  const element = event.target;
+  element.classList.toggle("fas");
+  element.classList.toggle("completeIcon");
+  element.classList.toggle("far");
+  
+   
+}
