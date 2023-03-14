@@ -1,3 +1,4 @@
+(() => {
 const btn = document.querySelector("[data-form-btn]");
 
 const createTask = (evento) => {
@@ -69,11 +70,28 @@ const completeTask = (event) => {
   
   EL TOGGLE LO QUE HACE ES QUE SI EXISTE LA CLASE LO QUITO Y SI NO EXISTE LA PONGO
   ES UN COMODIN YA QUE ARRIBA LO QUE TENEMOS ES ADD QUE ES SUMAR O REMOVE QUE ES ELIMINAR
+
+  con el elemento event.target podemos capturar el elemento que dio click, en este caso lo guardamos en element
+
+------------------------------------------------------
+Alternativa Correcta. ¡Exacto! A través de la variable botaoConclui capturamos en cual elemento fue hecho click, 
+después utilizamos la propiedad parentElement para subir un nodo en el árbol, y por fin, 
+pusimos el método toggle que adicionará la clase done cuando hagamos click en el botón
+
+const botaoConclui = evento.target
+
+const tarefaCompleta = botaoConclui.parentElement
+
+tarefaCompleta.classList.toggle('done')
+--------------------------------------------------
   */
   const element = event.target;
   element.classList.toggle("fas");
-  element.classList.toggle("completeIcon");
+  element.classList.toggle("completeIcon");//ESTA CLASE ES DE CSS, PODEMOS HACER USO DE LAS CLASES DE CSS
   element.classList.toggle("far");
   
    
 }
+
+}) //ESTOS PARENTESIS QUE ACABAMOS DE COLOCAR ES ALGO QUE SE LLAMA EN JAVASCRIP IIFE, QUE HACE QUE LAS FUNCIONES
+//QUE ESTAN DENTRO DEL ARCHIVO NO PUEDAN SER INVOCADAS A TRAVES DE LA CONSOLA DEL NAVEGADOR
